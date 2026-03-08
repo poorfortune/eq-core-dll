@@ -276,6 +276,12 @@ EQLIB_API VOID InitializeMapPlugin(VOID)
     EzDetour(CMapViewWnd__CMapViewWnd,&CMyMapViewWnd::Constructor_Detour,&CMyMapViewWnd::Constructor_Trampoline);
     CMyMapViewWnd::StealVFTable();
    // AddMQ2Data("MapSpawn",dataMapSpawn);
+    AddCommand("/mapfilter",    MapFilters,       0, 1, 1);
+    AddCommand("/maphide",      MapHideCmd,       0, 1, 1);
+    AddCommand("/mapshow",      MapShowCmd,       0, 1, 1);
+    AddCommand("/mapnames",     MapNames,         0, 1, 1);
+    AddCommand("/mapclick",     MapClickCommand,  0, 1, 1);
+    AddCommand("/highlight",    MapHighlightCmd,  0, 1, 1);
 }
 
 // Called once, when the plugin is to shutdown
@@ -286,6 +292,12 @@ PLUGIN_API VOID ShutdownMapPlugin(VOID)
 
     MapClear();
     CMyMapViewWnd::RestoreVFTable();
+    RemoveCommand("/mapfilter");
+    RemoveCommand("/maphide");
+    RemoveCommand("/mapshow");
+    RemoveCommand("/mapnames");
+    RemoveCommand("/mapclick");
+    RemoveCommand("/highlight");
 }
 
 // This is called each time a spawn is added to a zone (inserted into EQ's list of spawns),
