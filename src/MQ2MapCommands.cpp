@@ -9,8 +9,7 @@
 // ***************************************************************************
 VOID MapFilterSetting(PSPAWNINFO pChar, DWORD nMapFilter, PCHAR szValue)
 {
-   if (!pLocalPlayer || pLocalPlayer && !pLocalPlayer->Data.pSpawn ||
-       pLocalPlayer && pLocalPlayer->Data.pSpawn && !pLocalPlayer->Data.pSpawn->GM)
+   if (!pLocalPlayer || !pLocalPlayer->Data.pSpawn)
       return;
 
     CHAR szBuffer[MAX_STRING] = {0};
@@ -84,10 +83,7 @@ VOID MapFilterSetting(PSPAWNINFO pChar, DWORD nMapFilter, PCHAR szValue)
 
 VOID MapFilters(PSPAWNINFO pChar, PCHAR szLine)
 {
-
-	if (!pLocalPlayer ||
-       pLocalPlayer && !pLocalPlayer->Data.pSpawn ||
-       pLocalPlayer && pLocalPlayer->Data.pSpawn && !pLocalPlayer->Data.pSpawn->GM)
+   if (!pLocalPlayer || !pLocalPlayer->Data.pSpawn)
       return;
 
     bRunNextCommand = TRUE;
@@ -165,8 +161,7 @@ VOID MapFilters(PSPAWNINFO pChar, PCHAR szLine)
 
 VOID MapHighlightCmd(PSPAWNINFO pChar, PCHAR szLine)
 {
-   if (!pLocalPlayer || pLocalPlayer && !pLocalPlayer->Data.pSpawn ||
-       pLocalPlayer && pLocalPlayer->Data.pSpawn && !pLocalPlayer->Data.pSpawn->GM)
+   if (!pLocalPlayer || !pLocalPlayer->Data.pSpawn)
       return;
 
     CHAR szArg[MAX_STRING] = {0};
@@ -215,8 +210,7 @@ VOID MapHighlightCmd(PSPAWNINFO pChar, PCHAR szLine)
 
 VOID MapHideCmd(PSPAWNINFO pChar, PCHAR szLine)
 {
-   if (!pLocalPlayer || pLocalPlayer && !pLocalPlayer->Data.pSpawn ||
-       pLocalPlayer && pLocalPlayer->Data.pSpawn && !pLocalPlayer->Data.pSpawn->GM)
+   if (!pLocalPlayer || !pLocalPlayer->Data.pSpawn)
       return;
 
     CHAR szArg[MAX_STRING] = {0};
@@ -247,8 +241,7 @@ VOID MapHideCmd(PSPAWNINFO pChar, PCHAR szLine)
 
 VOID MapShowCmd(PSPAWNINFO pChar, PCHAR szLine)
 {
-   if (!pLocalPlayer || pLocalPlayer && !pLocalPlayer->Data.pSpawn ||
-       pLocalPlayer && pLocalPlayer->Data.pSpawn && !pLocalPlayer->Data.pSpawn->GM)
+   if (!pLocalPlayer || !pLocalPlayer->Data.pSpawn)
       return;
 
     CHAR szArg[MAX_STRING] = {0};
@@ -279,8 +272,7 @@ VOID MapShowCmd(PSPAWNINFO pChar, PCHAR szLine)
 
 VOID MapNames(PSPAWNINFO pChar, PCHAR szLine)
 {
-   if (!pLocalPlayer || pLocalPlayer && !pLocalPlayer->Data.pSpawn ||
-       pLocalPlayer && pLocalPlayer->Data.pSpawn && !pLocalPlayer->Data.pSpawn->GM)
+   if (!pLocalPlayer || !pLocalPlayer->Data.pSpawn)
       return;
 
     bRunNextCommand = TRUE;
@@ -407,9 +399,7 @@ DWORD ParseCombo(PCHAR Combo)
 #ifndef ISXEQ
 VOID MapClickCommand(PSPAWNINFO pChar, PCHAR szLine)
 {
-
-	if (!pLocalPlayer || pLocalPlayer && !pLocalPlayer->Data.pSpawn ||
-       pLocalPlayer && pLocalPlayer->Data.pSpawn && !pLocalPlayer->Data.pSpawn->GM)
+   if (!pLocalPlayer || !pLocalPlayer->Data.pSpawn)
       return;
 
     if (!szLine[0])
