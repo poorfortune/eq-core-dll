@@ -365,8 +365,8 @@ EQLIB_OBJECT CXStr::CXStr(class CXStr const &);
 EQLIB_OBJECT CXStr::CXStr(int,int,char);
 EQLIB_OBJECT CXStr::CXStr(unsigned short const *);
 EQLIB_OBJECT CXStr::CXStr(void);
-EQLIB_OBJECT char *CXStr::operator char *(void)const;
-EQLIB_OBJECT unsigned short *CXStr::operator unsigned short *(void)const;
+EQLIB_OBJECT CXStr::operator char *(void)const;
+EQLIB_OBJECT CXStr::operator unsigned short *(void)const;
 EQLIB_OBJECT bool CXStr::Find(char,int &);
 EQLIB_OBJECT bool CXStr::Find(class CXStr const &,int &);
 EQLIB_OBJECT bool CXStr::Find(unsigned short,int &);
@@ -5033,7 +5033,7 @@ EQLIB_OBJECT int CXMLSOMElementType::GetItemIdx(class CXStr);
 class CXMLSOMNode
 {
 public:
-EQLIB_OBJECT static void * __cdecl CXMLSOMNode::operator new(unsigned int);
+EQLIB_OBJECT static void * __cdecl CXMLSOMNode::operator new(size_t);
 EQLIB_OBJECT static void __cdecl CXMLSOMNode::FreeAllAllocs(void);
 EQLIB_OBJECT static void __cdecl CXMLSOMNode::operator delete(void *);
 // protected
@@ -6054,7 +6054,7 @@ inline void EQLIB_OBJECT KeyCombo::Clear(void)
 {
     *(unsigned long*)&Data[0]=0;
 }
-EQLIB_OBJECT int KeyCombo::operator int(void)const;
+EQLIB_OBJECT KeyCombo::operator int(void)const;
 EQLIB_OBJECT bool KeyCombo::GetPrintableLetter(unsigned short *)const;
 inline EQLIB_OBJECT bool KeyCombo::UsesAlt(void)const
 {
