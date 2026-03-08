@@ -70,6 +70,24 @@ bool isAllowBrownSkeletonsEnabled = true;
 // isAllowAllElementalsEnabled if set to true will allow the race 75 model to load when UseLuclinElemetals is set to TRUE.
 bool isAllowAllElementalsEnabled = true;
 
+// isMapEnabled if set to true will enable the MQ2 map plugin (spawn dots, labels, con colors) without enabling full MQ2 injects
+// If isMQInjectsEnabled is also true, this flag is ignored (map is already included)
+bool isMapEnabled = true;
+
+// isMulticlassDisplayEnabled if set to true:
+//   - Hooks class display functions to show "Primary/Secondary/Tertiary" (e.g. "Warrior/Cleric/Druid")
+//   - Hooks EQ_Character::CanUseItem so items usable by secondary or tertiary class are not highlighted red
+// secondaryClassID / tertiaryClassID: static fallback class IDs (1-16). Set to 0 to disable that slot.
+// For per-character support, set g_secondaryClassID / g_tertiaryClassID at runtime from a custom server packet.
+// NOTE: CanUseItem hook requires EQ_Character__CanUseItem_x to be defined in eqgame.h first.
+bool isMulticlassDisplayEnabled = false;
+int secondaryClassID = 0;
+int tertiaryClassID = 0;
+
+// isAAEnabledPre51 if set to true removes the client-side level 51 gate on the AA experience allocation slider
+// Patches the RoF2 button enable checks and prevents AA% reverting on sub-51 characters
+bool isAAEnabledPre51 = true;
+
 // ***** NPC *******
 
 // areCustomNPCsEnabled if set to true will allow the NPCs defined in NPCs[] to be injected in game

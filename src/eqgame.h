@@ -608,8 +608,11 @@
 #define EQ_Character__GetConLevel_x                                0x577CB0
 #define EQ_Character__IsExpansionFlag_x                            0x4106C0
 #define EQ_Character__TotalEffect_x                                0x438990
+// TODO: find EQ_Character__CanUseItem_x via IDA - in CInvSlotWnd::Draw, locate the call
+// that precedes the red ARGB tint on the item icon; that call target is CanUseItem. Then uncomment:
+//#define EQ_Character__CanUseItem_x                               0x00XXXXXX
 
-// EQ_Item 
+// EQ_Item
 #define EQ_Item__CanDrop_x                                         0x554E50
 #define EQ_Item__CreateItemTagString_x                             0x7BBC50
 #define EQ_Item__IsStackable_x                                     0x7B0380

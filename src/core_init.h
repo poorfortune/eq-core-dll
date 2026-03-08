@@ -5,6 +5,7 @@
 #include "core_zone.h"
 #include "core_luclin_models.h"
 #include "_options.h"
+#include "core_multiclass.h"
 
 // InitOptions is called during the initialization of this hook
 void InitOptions() {
@@ -15,4 +16,5 @@ void InitOptions() {
 	if (areCustomOldAnimationsEnabled) InjectCustomOldAnimations();
 	if (isBazaarWindowDisabled) DisableCBazaarSearchWnd();
 	if (isEQGOverrideEnabled) InjectEQGOrderLoading();
+	if (isMulticlassDisplayEnabled) EnableMulticlassDisplay();
 }

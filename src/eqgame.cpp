@@ -778,6 +778,9 @@ void InitHooks()
 		InitializeMapPlugin();
 		InitializeMQ2ItemDisplay();
 		InitializeMQ2Labels();
+	} else if (isMapEnabled) {
+		DebugSpew("enabling map plugin");
+		InitializeMapPlugin();
 	}
 
 	if (!baseAddress) return;
@@ -873,6 +876,22 @@ void InitHooks()
 
 		var = (((DWORD)0x00449F64 - 0x400000) + baseAddress); // Fix current HP cap
 		PatchA((DWORD*)var, "\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90\x90", 13);
+	}
+
+	if (isAAEnabledPre51) {
+		DebugSpew("enabling AA at level 2+ - RoF2");
+
+		// Patch 1: Button enable check
+		var = (((DWORD)0x0060A22B - 0x400000) + baseAddress);
+		PatchA((DWORD*)(var + 4), "\x01", 1);
+
+		// Patch 2: Button enable check
+		var = (((DWORD)0x0060A1D0 - 0x400000) + baseAddress);
+		PatchA((DWORD*)(var + 4), "\x01", 1);
+
+		// Patch 3: Prevent AA% reversion
+		var = (((DWORD)0x0060A12E - 0x400000) + baseAddress);
+		PatchA((DWORD*)(var + 4), "\x01", 1);
 	}
 
 	//0065CC71
