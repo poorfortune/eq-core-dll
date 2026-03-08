@@ -780,6 +780,8 @@ void InitHooks()
 		InitializeMQ2Labels();
 	} else if (isMapEnabled) {
 		DebugSpew("enabling map plugin");
+		InitializeMQ2Commands();
+		InitializeMQ2Spawns();
 		InitializeMapPlugin();
 	}
 
