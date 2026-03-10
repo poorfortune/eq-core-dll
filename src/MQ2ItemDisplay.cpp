@@ -634,7 +634,7 @@ PLUGIN_API VOID InitializeMQ2ItemDisplay(VOID)
 }
 
 // Called once, when the plugin is to shutdown
-PLUGIN_API VOID ShutdownPlugin(VOID)
+PLUGIN_API VOID ShutdownMQ2ItemDisplay(VOID)
 {
     RemoveDetour(CItemDisplayWnd__SetSpell);
     RemoveDetour(CItemDisplayWnd__UpdateStrings);

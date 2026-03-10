@@ -74,6 +74,10 @@ bool isAllowAllElementalsEnabled = true;
 // If isMQInjectsEnabled is also true, this flag is ignored (map is already included)
 bool isMapEnabled = true;
 
+// isItemDisplayEnabled if set to true will inject extra MQ2 information into item display windows (dmg bonus, spell info, etc)
+// If isMQInjectsEnabled is also true, this flag is ignored (item display is already included)
+bool isItemDisplayEnabled = true;
+
 // isMulticlassDisplayEnabled if set to true:
 //   - Hooks class display functions to show "Primary/Secondary/Tertiary" (e.g. "Warrior/Cleric/Druid")
 //   - Hooks EQ_Character::CanUseItem so items usable by secondary or tertiary class are not highlighted red

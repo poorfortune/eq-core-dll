@@ -311,6 +311,7 @@ EdgeDPSEntry GetEdgeDPSEntryByID(DWORD id, bool bAdd = true);
 void SetEdgeDPSEntryByID(DWORD id, EdgeDPSEntry entry);
 PLUGIN_API VOID SetMapGameState(DWORD GameState);
 LEGACY_API VOID InitializeMQ2ItemDisplay();
+LEGACY_API VOID ShutdownMQ2ItemDisplay();
 LEGACY_API VOID InitializeMQ2Labels();
 LEGACY_API VOID ShutdownMQ2Commands();
 LEGACY_API VOID AddCommand(PCHAR Command, fEQCommand Function, BOOL EQ=0, BOOL Parse=1, BOOL InGame=0);

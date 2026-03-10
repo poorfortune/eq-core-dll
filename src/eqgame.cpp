@@ -783,6 +783,11 @@ void InitHooks()
 		InitializeMQ2Commands();
 		InitializeMQ2Spawns();
 		InitializeMapPlugin();
+		if (isItemDisplayEnabled)
+			InitializeMQ2ItemDisplay();
+	} else if (isItemDisplayEnabled) {
+		DebugSpew("enabling item display");
+		InitializeMQ2ItemDisplay();
 	}
 
 	if (!baseAddress) return;

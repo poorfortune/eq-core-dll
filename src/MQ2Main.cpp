@@ -327,6 +327,7 @@ void __cdecl MQ2Shutdown()
 {
     DebugTry(ShutdownMQ2KeyBinds());
     DebugTry(ShutdownMQ2Spawns());
+    DebugTry(ShutdownMQ2ItemDisplay());
     DebugTry(ShutdownDisplayHook());
 #ifndef ISXEQ
     DebugTry(ShutdownMQ2DInput());
