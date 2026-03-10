@@ -84,7 +84,7 @@ bool isItemDisplayEnabled = true;
 // secondaryClassID / tertiaryClassID: static fallback class IDs (1-16). Set to 0 to disable that slot.
 // For per-character support, set g_secondaryClassID / g_tertiaryClassID at runtime from a custom server packet.
 // NOTE: CanUseItem hook requires EQ_Character__CanUseItem_x to be defined in eqgame.h first.
-bool isMulticlassDisplayEnabled = false;
+bool isMulticlassDisplayEnabled = true;
 int secondaryClassID = 0;
 int tertiaryClassID = 0;
 
