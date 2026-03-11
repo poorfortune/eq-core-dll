@@ -1081,16 +1081,9 @@ PMAPLABEL GenerateLabel(PMAPSPAWN pMapSpawn, DWORD Color)
     pLabel->Layer = 2;
     pLabel->Size = 3;
 
-	if (!pLocalPlayer || pLocalPlayer && !pLocalPlayer->Data.pSpawn ||
-        pLocalPlayer && pLocalPlayer->Data.pSpawn && !pLocalPlayer->Data.pSpawn->GM && pMapSpawn && pMapSpawn->pSpawn && pMapSpawn->pSpawn->Type != SPAWN_PLAYER && !IsGroupMember(pMapSpawn->pSpawn)) {
-			pLabel->Label = GenerateSpawnName(pMapSpawn->pSpawn, pMapSpawn->pSpawn->Type == SPAWN_PLAYER ? " " : "Mob");
-	}
-	else
-	{
-		pLabel->Label = GenerateSpawnName(pMapSpawn->pSpawn, MapNameString);
-		if (pMapSpawn && pMapSpawn->pSpawn && pMapSpawn->pSpawn->Type == SPAWN_PLAYER)
-			pLabel->Layer = 3;
-	}
+	if (pMapSpawn && pMapSpawn->pSpawn && pMapSpawn->pSpawn->Type == SPAWN_PLAYER)
+		pLabel->Layer = 3;
+	pLabel->Label = GenerateSpawnName(pMapSpawn->pSpawn, MapNameString);
     pLabel->Color.ARGB = Color;
     pLabel->Width = 20;
     pLabel->Height= 14;

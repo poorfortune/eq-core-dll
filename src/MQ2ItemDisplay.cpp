@@ -457,6 +457,7 @@ public:
 
         UpdateStrings_Trampoline();
 
+        if (!Item) return;
         // keep a global copy of the last item displayed...
         memcpy(&g_Item, Item, sizeof(ITEMINFO));
 

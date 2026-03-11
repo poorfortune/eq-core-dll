@@ -781,7 +781,6 @@ void InitHooks()
 	} else if (isMapEnabled) {
 		DebugSpew("enabling map plugin");
 		InitializeMQ2Commands();
-		InitializeMQ2Spawns();
 		InitializeMapPlugin();
 		if (isItemDisplayEnabled)
 			InitializeMQ2ItemDisplay();
