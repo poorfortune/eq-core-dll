@@ -107,10 +107,39 @@ DETOUR_TRAMPOLINE_EMPTY(int __fastcall CanUseItem_Trampoline(void* thisptr, void
 #endif
 
 // -----------------------------------------------------------------------
+// dsp_chat detour - intercepts server-sent multiclass assignment messages
+//
+// The server sends a system message in the format:  ##MULTICLASS:sec:ter
+// where sec and ter are class IDs 1-16 (0 = disabled for that slot).
+// The message is consumed silently and never shown in the chat window.
+//
+// Example server message: "##MULTICLASS:2:6"  (Cleric secondary, Druid tertiary)
+// To clear classes:        "##MULTICLASS:0:0"
+// -----------------------------------------------------------------------
+class CMulticlassChatHook
+{
+public:
+    VOID Trampoline(PCHAR szMsg, DWORD dwColor, bool EqLog, bool dopercentsubst);
+    VOID Detour(PCHAR szMsg, DWORD dwColor, bool EqLog, bool dopercentsubst)
+    {
+        if (szMsg && strncmp(szMsg, "##MULTICLASS:", 13) == 0) {
+            int sec = 0, ter = 0;
+            sscanf(szMsg + 13, "%d:%d", &sec, &ter);
+            g_secondaryClassID = (BYTE)(sec >= 1 && sec <= 16 ? sec : 0);
+            g_tertiaryClassID  = (BYTE)(ter >= 1 && ter <= 16 ? ter : 0);
+            return; // suppress - do not display in chat
+        }
+        Trampoline(szMsg, dwColor, EqLog, dopercentsubst);
+    }
+};
+DETOUR_TRAMPOLINE_EMPTY(VOID CMulticlassChatHook::Trampoline(PCHAR szMsg, DWORD dwColor, bool EqLog, bool dopercentsubst));
+
+// -----------------------------------------------------------------------
 // Called from InitOptions() when isMulticlassDisplayEnabled is true
 // -----------------------------------------------------------------------
 void EnableMulticlassDisplay()
 {
+    EzDetour(CEverQuest__dsp_chat,                  &CMulticlassChatHook::Detour,   &CMulticlassChatHook::Trampoline);
     EzDetour(CEverQuest__GetClassDesc_x,            GetClassDesc_Detour,            GetClassDesc_Trampoline);
     EzDetour(CEverQuest__GetClassThreeLetterCode_x, GetClassThreeLetterCode_Detour, GetClassThreeLetterCode_Trampoline);
 
