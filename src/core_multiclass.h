@@ -11,9 +11,8 @@ BYTE g_tertiaryClassID  = 0;
 static char g_classDescBuf[64] = {0};
 static char g_classCodeBuf[24] = {0};
 
-// Helper: resolve effective secondary/tertiary IDs
-static inline int GetSecondaryID() { return (g_secondaryClassID != 0) ? (int)g_secondaryClassID : secondaryClassID; }
-static inline int GetTertiaryID()  { return (g_tertiaryClassID  != 0) ? (int)g_tertiaryClassID  : tertiaryClassID;  }
+static inline int GetSecondaryID() { return (int)g_secondaryClassID; }
+static inline int GetTertiaryID()  { return (int)g_tertiaryClassID;  }
 
 // -----------------------------------------------------------------------
 // GetClassDesc detour

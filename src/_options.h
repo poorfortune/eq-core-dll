@@ -81,12 +81,9 @@ bool isItemDisplayEnabled = true;
 // isMulticlassDisplayEnabled if set to true:
 //   - Hooks class display functions to show "Primary/Secondary/Tertiary" (e.g. "Warrior/Cleric/Druid")
 //   - Hooks EQ_Character::CanUseItem so items usable by secondary or tertiary class are not highlighted red
-// secondaryClassID / tertiaryClassID: static fallback class IDs (1-16). Set to 0 to disable that slot.
-// For per-character support, set g_secondaryClassID / g_tertiaryClassID at runtime from a custom server packet.
+// Class IDs are set per-character at runtime via server message "##MULTICLASS:sec:ter" (class IDs 1-16).
 // NOTE: CanUseItem hook requires EQ_Character__CanUseItem_x to be defined in eqgame.h first.
 bool isMulticlassDisplayEnabled = true;
-int secondaryClassID = 0;
-int tertiaryClassID = 0;
 
 // isAAEnabledPre51 if set to true removes the client-side level 51 gate on the AA experience allocation slider
 // Patches the RoF2 button enable checks and prevents AA% reverting on sub-51 characters
